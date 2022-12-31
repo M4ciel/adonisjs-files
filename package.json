@@ -1,0 +1,111 @@
+{
+    "name": "adonisjs-files",
+    "displayName": "AdonisJs Files",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Other",
+        "Snippets"
+    ],
+    "activationEvents": [
+        "onCommand:extension.GenerateCommand",
+        "onCommand:extension.GenerateController",
+        "onCommand:extension.GenerateException",
+        "onCommand:extension.GenerateFactory",
+        "onCommand:extension.GenerateMigration",
+        "onCommand:extension.GenerateModel"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.GenerateCommand",
+                "title": "AdonisJs - Generate Command"
+            },
+            {
+                "command": "extension.GenerateController",
+                "title": "AdonisJs - Generate Controller"
+            },
+            {
+                "command": "extension.GenerateException",
+                "title": "AdonisJs - Generate Exception"
+            },
+            {
+                "command": "extension.GenerateFactory",
+                "title": "AdonisJs - Generate Factory"
+            },
+            {
+                "command": "extension.GenerateMigration",
+                "title": "AdonisJs - Generate Migration"
+            },
+            {
+                "command": "extension.GenerateModel",
+                "title": "AdonisJs - Generate Model"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.GenerateCommand",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateController",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateException",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateFactory",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateMigration",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateModel",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.0.0",
+        "@types/mocha": "^10.0.1",
+        "@types/mustache": "^4.2.2",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.74.0",
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
+        "@vscode/test-electron": "^2.2.0",
+        "eslint": "^8.28.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.1.0",
+        "typescript": "^4.9.3"
+    },
+    "dependencies": {
+        "@types/fs-extra": "^9.0.13",
+        "fs-extra": "^11.1.0",
+        "mustache": "^4.2.0"
+    }
+}
