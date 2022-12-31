@@ -14,220 +14,54 @@ export function activate(context: ExtensionContext) {
     let disposableCommandCommand = commands.registerCommand(
         "extension.GenerateCommand",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("commands")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Command name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
-
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.command,
-                            });
-
-                            sendTextTerminal(
-                                `node ace make:command ${getPath}`
-                            );
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a command into Commands folder"
-                    );
-                }
-            }
+            defaultCommand(uri, "Command", FileType.command, "command");
         }
     );
 
     let disposableControllerCommand = commands.registerCommand(
         "extension.GenerateController",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("app\\Controllers")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Controller name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
-
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.controller,
-                            });
-
-                            sendTextTerminal(
-                                `node ace make:controller ${getPath}`
-                            );
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a controller into Controllers folder"
-                    );
-                }
-            }
+            defaultCommand(
+                uri,
+                "Controller",
+                FileType.controller,
+                "controller"
+            );
         }
     );
 
     let disposableExceptionCommand = commands.registerCommand(
         "extension.GenerateException",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("app\\Exceptions")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Exception name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
-
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.exceptions,
-                            });
-
-                            sendTextTerminal(
-                                `node ace make:exception ${getPath}`
-                            );
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a exception into Exceptions folder"
-                    );
-                }
-            }
+            defaultCommand(uri, "Exception", FileType.exceptions, "exception");
         }
     );
 
     let disposableFactoryCommand = commands.registerCommand(
         "extension.GenerateFactory",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("database\\factories")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Factory name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
+            defaultCommand(uri, "Factory", FileType.factories, "factory");
+        }
+    );
 
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.factories,
-                            });
-
-                            sendTextTerminal(
-                                `node ace make:factory ${getPath}`
-                            );
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a factory into Factories folder"
-                    );
-                }
-            }
+    let disposableListenerCommand = commands.registerCommand(
+        "extension.GenerateListener",
+        (uri: Uri) => {
+            defaultCommand(uri, "Listener", FileType.listener, "listener");
         }
     );
 
     let disposableMigrationCommand = commands.registerCommand(
         "extension.GenerateMigration",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("database\\migrations")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Migration name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
-
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.migrations,
-                            });
-
-                            sendTextTerminal(
-                                `node ace make:migration ${getPath}`
-                            );
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a migration into Migrations folder"
-                    );
-                }
-            }
+            defaultCommand(uri, "Migrations", FileType.migrations, "migration");
         }
     );
 
     let disposableModelCommand = commands.registerCommand(
         "extension.GenerateModel",
         (uri: Uri) => {
-            if (workspace === undefined) {
-                return window.showErrorMessage(
-                    "Please select a workspace first"
-                );
-            } else {
-                if (uri.fsPath.includes("app\\Models")) {
-                    window
-                        .showInputBox({
-                            placeHolder: "Please enter Model name",
-                        })
-                        .then((input) => {
-                            if (input === undefined) {
-                                return;
-                            }
-
-                            const getPath = getPathName({
-                                fileName: input,
-                                filePath: uri.fsPath,
-                                fileType: FileType.models,
-                            });
-
-                            sendTextTerminal(`node ace make:model ${getPath}`);
-                        });
-                } else {
-                    return window.showErrorMessage(
-                        "Please make a model into Models folder"
-                    );
-                }
-            }
+            defaultCommand(uri, "Models", FileType.models, "model");
         }
     );
 
@@ -236,9 +70,45 @@ export function activate(context: ExtensionContext) {
         disposableControllerCommand,
         disposableExceptionCommand,
         disposableFactoryCommand,
+        disposableListenerCommand,
         disposableMigrationCommand,
         disposableModelCommand
     );
 }
 
 export function deactivate() {}
+
+function defaultCommand(
+    uri: Uri,
+    name: string,
+    fileType: FileType,
+    commandName: string
+) {
+    if (workspace === undefined) {
+        return window.showErrorMessage("Please select a workspace first");
+    } else {
+        if (uri.fsPath.includes(fileType)) {
+            window
+                .showInputBox({
+                    placeHolder: `Please enter ${name} name`,
+                })
+                .then((input) => {
+                    if (input === undefined) {
+                        return;
+                    }
+
+                    const getPath = getPathName({
+                        fileName: input,
+                        filePath: uri.fsPath,
+                        fileType: fileType,
+                    });
+
+                    sendTextTerminal(`node ace make:${commandName} ${getPath}`);
+                });
+        } else {
+            return window.showErrorMessage(
+                `Please create ${commandName} into ${name} folder`
+            );
+        }   
+    }
+}
