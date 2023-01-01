@@ -16,8 +16,15 @@
         "onCommand:extension.GenerateException",
         "onCommand:extension.GenerateFactory",
         "onCommand:extension.GenerateListener",
+        "onCommand:extension.GenerateMiddleware",
         "onCommand:extension.GenerateMigration",
-        "onCommand:extension.GenerateModel"
+        "onCommand:extension.GenerateModel",
+        "onCommand:extension.GenerateProvider",
+        "onCommand:extension.GenerateSeeder",
+        "onCommand:extension.GenerateSuite",
+        "onCommand:extension.GenerateTest",
+        "onCommand:extension.GenerateValidator",
+        "onCommand:extension.GenerateView"
     ],
     "main": "./out/extension.js",
     "contributes": {
@@ -43,12 +50,40 @@
                 "title": "AdonisJs - Generate Listener"
             },
             {
+                "command": "extension.GenerateMiddleware",
+                "title": "AdonisJs - Generate Middleware"
+            },
+            {
                 "command": "extension.GenerateMigration",
                 "title": "AdonisJs - Generate Migration"
             },
             {
                 "command": "extension.GenerateModel",
                 "title": "AdonisJs - Generate Model"
+            },
+            {
+                "command": "extension.GenerateProvider",
+                "title": "AdonisJs - Generate Provider"
+            },
+            {
+                "command": "extension.GenerateSeeder",
+                "title": "AdonisJs - Generate Seeder"
+            },
+            {
+                "command": "extension.GenerateSuite",
+                "title": "AdonisJs - Generate Suite"
+            },
+            {
+                "command": "extension.GenerateTest",
+                "title": "AdonisJs - Generate Test"
+            },
+            {
+                "command": "extension.GenerateValidator",
+                "title": "AdonisJs - Generate Validator"
+            },
+            {
+                "command": "extension.GenerateView",
+                "title": "AdonisJs - Generate View"
             }
         ],
         "menus": {
@@ -79,12 +114,47 @@
                     "group": "2_workspace"
                 },
                 {
+                    "command": "extension.GenerateMiddleware",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
                     "command": "extension.GenerateMigration",
                     "when": "explorerResourceIsFolder",
                     "group": "2_workspace"
                 },
                 {
                     "command": "extension.GenerateModel",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateProvider",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateSeeder",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateSuite",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateTest",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateValidator",
+                    "when": "explorerResourceIsFolder",
+                    "group": "2_workspace"
+                },
+                {
+                    "command": "extension.GenerateView",
                     "when": "explorerResourceIsFolder",
                     "group": "2_workspace"
                 }
