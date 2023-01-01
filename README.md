@@ -2,6 +2,8 @@
 
 vs code extension to quickly create **AdonisJs files** using **GUI**
 
+![](images/demo.gif)
+
 ## Features
 
 Right click on any target folder in your current project.
@@ -9,20 +11,20 @@ You can find multiple options that has been added to the context menu:
 
 Folder Menu Options  |
 ---           |
+AdonisJs - Generate Command |
 AdonisJs - Generate Controller |
-AdonisJs - Generate Module |
-AdonisJs - Generate Service |
 AdonisJs - Generate Exception |
+AdonisJs - Generate Factory |
+AdonisJs - Generate Listener |
 AdonisJs - Generate Middleware |
-AdonisJs - Generate Pipe |
-AdonisJs - Generate Interceptor |
-AdonisJs - Generate Decorator |
-AdonisJs - Generate Guard |
-AdonisJs - Generate Exception Filter |
-AdonisJs - Generate Transport |
-AdonisJs - Generate Adapter |
-AdonisJs - Generate Webpack |
-AdonisJs - Generate Gateway |
+AdonisJs - Generate Migration |
+AdonisJs - Generate Model |
+AdonisJs - Generate Provider |
+AdonisJs - Generate Seeder |
+AdonisJs - Generate Suite |
+AdonisJs - Generate Test |
+AdonisJs - Generate Validator |
+AdonisJs - Generate View |
 
 ### Example
 
