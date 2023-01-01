@@ -1,14 +1,6 @@
-import {
-    workspace,
-    commands,
-    ExtensionContext,
-    window,
-    Uri,
-    languages,
-} from "vscode";
+import { workspace, commands, ExtensionContext, window, Uri } from "vscode";
 import { FileType } from "./adonisjs";
-// import { createCommandFile } from "./file-helper";
-import { getPathName, sendTextTerminal } from "./utils";
+import { getPathName, getPathTestName, sendTextTerminal } from "./utils";
 
 export function activate(context: ExtensionContext) {
     let disposableCommandCommand = commands.registerCommand(
@@ -51,6 +43,18 @@ export function activate(context: ExtensionContext) {
         }
     );
 
+    let disposableMiddlewareCommand = commands.registerCommand(
+        "extension.GenerateMiddleware",
+        (uri: Uri) => {
+            defaultCommand(
+                uri,
+                "Middleware",
+                FileType.middleware,
+                "middleware"
+            );
+        }
+    );
+
     let disposableMigrationCommand = commands.registerCommand(
         "extension.GenerateMigration",
         (uri: Uri) => {
@@ -65,14 +69,63 @@ export function activate(context: ExtensionContext) {
         }
     );
 
+    let disposableProviderCommand = commands.registerCommand(
+        "extension.GenerateProvider",
+        (uri: Uri) => {
+            defaultCommand(uri, "Provider", FileType.provider, "provider");
+        }
+    );
+
+    let disposableSeederCommand = commands.registerCommand(
+        "extension.GenerateSeeder",
+        (uri: Uri) => {
+            defaultCommand(uri, "Seeder", FileType.seeders, "seeder");
+        }
+    );
+
+    let disposableSuiteCommand = commands.registerCommand(
+        "extension.GenerateSuite",
+        (uri: Uri) => {
+            defaultCommand(uri, "Suite", FileType.suite, "suite");
+        }
+    );
+
+    let disposableTestCommand = commands.registerCommand(
+        "extension.GenerateTest",
+        (uri: Uri) => {
+            defaultCommand(uri, "Test", FileType.test, "test");
+        }
+    );
+
+    let disposableValidatorCommand = commands.registerCommand(
+        "extension.GenerateValidator",
+        (uri: Uri) => {
+            defaultCommand(uri, "Validator", FileType.validator, "validator");
+        }
+    );
+
+    let disposableViewCommand = commands.registerCommand(
+        "extension.GenerateView",
+        (uri: Uri) => {
+            defaultCommand(uri, "View", FileType.view, "view");
+        }
+    );
+
     context.subscriptions.push(
         disposableCommandCommand,
         disposableControllerCommand,
         disposableExceptionCommand,
         disposableFactoryCommand,
         disposableListenerCommand,
+        disposableMiddlewareCommand,
         disposableMigrationCommand,
-        disposableModelCommand
+        disposableModelCommand,
+        disposableProviderCommand,
+        disposableSeederCommand,
+        disposableSuiteCommand,
+        disposableTestCommand,
+        disposableValidatorCommand,
+        disposableViewCommand
     );
 }
 
@@ -97,18 +150,43 @@ function defaultCommand(
                         return;
                     }
 
-                    const getPath = getPathName({
-                        fileName: input,
-                        filePath: uri.fsPath,
-                        fileType: fileType,
-                    });
+                    switch (fileType) {
+                        case FileType.test:
+                            const getPathTest = getPathTestName({
+                                fileName: input,
+                                filePath: uri.fsPath,
+                                fileType: FileType.test,
+                            });
 
-                    sendTextTerminal(`node ace make:${commandName} ${getPath}`);
+                            sendTextTerminal(
+                                `node ace make:${commandName} ${getPathTest}`
+                            );
+                            break;
+                        default:
+                            const getPath = getPathName({
+                                fileName: input,
+                                filePath: uri.fsPath,
+                                fileType: fileType,
+                            });
+
+                            sendTextTerminal(
+                                `node ace make:${commandName} ${getPath}`
+                            );
+
+                            if (fileType === FileType.middleware) {
+                                window.showInformationMessage(
+                                    `> Open start/kernel.ts file\n
+									> Register the following function as a global or a named middleware\n
+									> () => import('App\\Middleware${getPath}')`
+                                );
+                            }
+                            break;
+                    }
                 });
         } else {
             return window.showErrorMessage(
                 `Please create ${commandName} into ${name} folder`
             );
-        }   
+        }
     }
 }
