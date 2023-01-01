@@ -1,7 +1,17 @@
 {
     "name": "adonisjs-files",
+    "publisher": "Maciel",
     "displayName": "AdonisJs Files",
-    "description": "",
+    "description": "Quickly create AdonisJs Files",
+    "icon": "images/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/M4ciel/adonisjs-files"
+    },
+    "bugs": {
+        "url": "https://github.com/M4ciel/adonisjs-files/issues",
+        "email": "caiolmaciell@outlook.com"
+    },
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.74.0"

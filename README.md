@@ -1,71 +1,44 @@
-# adonisjs-files README
+# AdonisJs Files    
 
-This is the README for your extension "adonisjs-files". After writing up a brief description, we recommend including the following sections.
+vs code extension to quickly create **AdonisJs files** using **GUI**
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Right click on any target folder in your current project.
+You can find multiple options that has been added to the context menu:
 
-For example if there is an image subfolder under your extension project workspace:
+Folder Menu Options  |
+---           |
+AdonisJs - Generate Controller |
+AdonisJs - Generate Module |
+AdonisJs - Generate Service |
+AdonisJs - Generate Exception |
+AdonisJs - Generate Middleware |
+AdonisJs - Generate Pipe |
+AdonisJs - Generate Interceptor |
+AdonisJs - Generate Decorator |
+AdonisJs - Generate Guard |
+AdonisJs - Generate Exception Filter |
+AdonisJs - Generate Transport |
+AdonisJs - Generate Adapter |
+AdonisJs - Generate Webpack |
+AdonisJs - Generate Gateway |
 
-\!\[feature X\]\(images/feature-x.png\)
+### Example
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Right click on controllers folder to generate a Controller
 
-## Requirements
+## Installation
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Install Visual Studio Code 1.40.0 or higher
+2. Launch Code
+3. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
+4. Select `Install Extension`
+5. Type `adonisjs files` and press enter
+6. Install
 
-## Extension Settings
+# License
+MIT
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
+*inspired on NestJs Files*
 **Enjoy!**
