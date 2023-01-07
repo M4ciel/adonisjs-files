@@ -1,4 +1,4 @@
-# AdonisJs Files    
+# AdonisJs Files   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=M4ciel_adonisjs-files&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=M4ciel_adonisjs-files) 
 
 vs code extension to quickly create **AdonisJs files** using **GUI**
 
